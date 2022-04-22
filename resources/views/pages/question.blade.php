@@ -29,8 +29,8 @@
                             @foreach ($questions as $question)
                                 
                                 <ul class="topic list-unstyled row mx-0 justify-content-between align-items-center border-top-0">
-                                    <li class="entry mb-0 col-12">
-                                        <h3 class="mb-0"><a href="#">{{ $question->title }}</a></h3>
+                                    <li class="entry mb-0 col-sm-10">
+                                        <h3 class="mb-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
                                         {{ Str::limit($question->body, 200) }}
                                         <div class="entry-meta mt-1">
                                             <ul>
@@ -42,6 +42,11 @@
                                             </ul>
                                         </div>
                                     </li>
+                                    <li class="col-sm-2">
+										<div class="bbp-author">
+											<a href="#"><img alt="{{ $question->user->name }}" src="demos/forum/images/user.png"></a>
+										</div>
+									</li>
                                 </ul>
 
                             @endforeach

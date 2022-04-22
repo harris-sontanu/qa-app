@@ -64,8 +64,8 @@
                             </li>
                             <li class="col-sm-2">
                                 <div class="bbp-author">
-                                    <a href="#"><img alt="User" src="demos/articles/images/authors/3.jpg"></a>
-                                    <a href="#"><img alt="User" src="demos/articles/images/authors/2.jpg"></a>
+                                    <a href="#"><img alt="User" src="https://source.unsplash.com/WNoLnJo7tS8/120x120"></a>
+                                    <a href="#"><img alt="User" src="https://source.unsplash.com/jzY0KRJopEI/120x120"></a>
                                     <a href="#"><img alt="User" src="demos/forum/images/user.png"></a>
                                 </div>
                             </li>
@@ -84,7 +84,7 @@
                             </li>
                             <li class="col-sm-2">
                                 <div class="bbp-author">
-                                    <a href="#"><img alt="User" src="demos/articles/images/authors/2.jpg"></a>
+                                    <a href="#"><img alt="User" src="https://source.unsplash.com/WZz1u5R5uT4/120x120"></a>
                                     <a href="#"><img alt="User" src="demos/forum/images/user.png"></a>
                                 </div>
                             </li>
@@ -103,9 +103,9 @@
                             </li>
                             <li class="col-sm-2">
                                 <div class="bbp-author">
-                                    <a href="#"><img alt="User" src="demos/articles/images/authors/1.jpg"></a>
-                                    <a href="#"><img alt="User" src="demos/articles/images/authors/2.jpg"></a>
-                                    <a href="#"><img alt="User" src="demos/articles/images/authors/3.jpg"></a>
+                                    <a href="#"><img alt="User" src="https://source.unsplash.com/WZz1u5R5uT4/120x120"></a>
+                                    <a href="#"><img alt="User" src="https://source.unsplash.com/jzY0KRJopEI/120x120"></a>
+                                    <a href="#"><img alt="User" src="https://source.unsplash.com/WNoLnJo7tS8/120x120"></a>
                                     <a href="#"><img alt="User" src="demos/forum/images/user.png"></a>
                                 </div>
                             </li>

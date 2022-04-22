@@ -48,8 +48,8 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <a href="demo-forum.html" class="standard-logo"><img src="demos/forum/images/canvasforum.png" alt="Canvas Logo"></a>
-                    <a href="demo-forum.html" class="retina-logo"><img src="demos/forum/images/canvasforum@2x.png" alt="Canvas Logo"></a>
+                    <a href="home" class="standard-logo"><img src="demos/forum/images/canvasforum.png" alt="Canvas Logo"></a>
+                    <a href="home" class="retina-logo"><img src="demos/forum/images/canvasforum@2x.png" alt="Canvas Logo"></a>
                 </div><!-- #logo end -->
 
                 <div class="header-misc ms-0">
@@ -107,8 +107,8 @@
                 <nav class="primary-menu">
 
                     <ul class="menu-container">
-                        <li class="menu-item current"><a class="menu-link" href="demo-forum.html"><div>Home</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href="demo-forum-single.html"><div>Topic Page</div></a></li>
+                        <li class="menu-item current"><a class="menu-link" href="{{ route('home') }}"><div>Home</div></a></li>
+                        <li class="menu-item"><a class="menu-link" href="{{ route('question.index') }}"><div>Questions</div></a></li>
                         <li class="menu-item"><a class="menu-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-signin"><div>Create</div></a></li>
                         <li class="menu-item"><a class="menu-link" href="demo-forum-profile.html"><div>Profile</div></a></li>
                         <li class="menu-item"><a class="menu-link" href="demo-forum-search-result.html"><div>Search Page</div></a></li>

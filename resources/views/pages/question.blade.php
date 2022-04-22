@@ -21,6 +21,18 @@
     <div class="content-wrap">
         <div class="container mw-md">
 
+            <div class="row align-items-center mb-4">
+                <div class="col-sm mb-3 mb-sm-0">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-signin" class="button bg-alt py-2 rounded-1 fw-medium nott ls0 ms-0 ms-sm-1 h-op-09">Ask Question</a>
+                </div>
+                <div class="col-sm-auto">
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="latest">Most Recent</option>
+                        <option value="popular">Popular</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="mw-md mx-auto">
                 <ul class="list-unstyled mb-4">
                     <li>

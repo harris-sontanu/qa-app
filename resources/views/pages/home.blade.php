@@ -16,7 +16,7 @@
                 </div>
                 <div>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#modal-signin" class="button button-large border border-width-2 bg-alt py-2 rounded-1 fw-medium nott ls0 ms-0 ms-sm-1 h-op-09"><i class="icon-line-file-add"></i>Create A New Topic</a>
-                    <a href="demo-forum-single.html" class="button button-large button-border rounded-1 fw-medium nott h-bg-alt ls0 ms-0"><i class="icon-line-align-left"></i>Browse All Topics</a>
+                    <a href="{{ route('question.index') }}" class="button button-large button-border rounded-1 fw-medium nott h-bg-alt ls0 ms-0"><i class="icon-line-align-left"></i>Browse All Topics</a>
                 </div>
             </div>
 

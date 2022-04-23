@@ -1,43 +1,3 @@
-<!-- Modal -->
-<div class="modal fade" id="modal-signin" tabindex="-1" aria-labelledby="modal-signin" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-white p-4 p-md-5 rounded">
-            <h3 class="h2 fw-bolder mb-4">Create a New Topic</h3>
-            <form class="row mb-0" action="#" method="post" enctype="multipart/form-data">
-                <div class="col-12 form-group mb-4">
-                    <textarea name="post-message" id="post-message" class="form-control" cols="30" rows="10"></textarea>
-                </div>
-                <div class="clear"></div>
-                <div class="col-6 form-group">
-                    <small class="text-muted">Maximum file size allowed is 2048 KB.</small>
-                    <div class="form-file">
-                        <input type="file" class="form-control" id="file-input">
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="col-12 form-group mb-1">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label nott ls0 mb-0 fw-semibold" for="inlineCheckbox1">Set as a Private Reply</label>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="col-12 form-group">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label nott ls0 mb-0 fw-semibold" for="inlineCheckbox2">Email me when Someone Replies</label>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <button type="submit" name="submit" class="button button-large bg-alt border border-width-2 rounded-1 fw-medium nott ls0 ms-0">Submit Now</button>
-
-                    <button type="button" data-bs-dismiss="modal" aria-label="Close" class="button button-large button-border border-default h-bg-danger rounded-1 fw-medium nott ls0 ms-0">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <!-- Header
 ============================================= -->
 <header id="header" class="full-header header-size-md" data-mobile-sticky="true">
@@ -48,8 +8,8 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <a href="home" class="standard-logo"><img src="demos/forum/images/canvasforum.png" alt="Canvas Logo"></a>
-                    <a href="home" class="retina-logo"><img src="demos/forum/images/canvasforum@2x.png" alt="Canvas Logo"></a>
+                    <a href="home" class="standard-logo"><img src="{{ asset('demos/forum/images/canvasforum.png') }}" alt="Canvas Logo"></a>
+                    <a href="home" class="retina-logo"><img src="{{ asset('demos/forum/images/canvasforum@2x.png') }}" alt="Canvas Logo"></a>
                 </div><!-- #logo end -->
 
                 <div class="header-misc ms-0">
@@ -108,7 +68,7 @@
 
                     <ul class="menu-container">
                         <li class="menu-item current"><a class="menu-link" href="{{ route('home') }}"><div>Home</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('question.index') }}"><div>Questions</div></a></li>
+                        <li class="menu-item"><a class="menu-link" href="{{ route('questions.index') }}"><div>Questions</div></a></li>
                         <li class="menu-item"><a class="menu-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-signin"><div>Create</div></a></li>
                         <li class="menu-item"><a class="menu-link" href="demo-forum-profile.html"><div>Profile</div></a></li>
                         <li class="menu-item"><a class="menu-link" href="demo-forum-search-result.html"><div>Search Page</div></a></li>

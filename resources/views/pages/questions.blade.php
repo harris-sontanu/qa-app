@@ -8,8 +8,8 @@
     <div class="container">
         <h2 class="h2" style="font-weight: 800">All Questions</h2>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="alt-color" href="#">Home</a></li>
-            <li class="breadcrumb-item"><a class="alt-color" href="#">Question</a></li>
+            <li class="breadcrumb-item"><a class="alt-color" href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a class="alt-color" href="{{ route('questions.index') }}">Questions</a></li>
             <li class="breadcrumb-item text-black-50 active" aria-current="page">All Topics</li>
         </ol>
     </div>
@@ -23,13 +23,16 @@
 
             <div class="row align-items-center mb-4">
                 <div class="col-sm mb-3 mb-sm-0">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-signin" class="button bg-alt py-2 rounded-1 fw-medium nott ls0 ms-0 ms-sm-1 h-op-09">Ask Question</a>
+                    <a href="{{ route('questions.ask') }}" class="button bg-alt py-2 rounded-1 fw-medium nott ls0 ms-0 ms-sm-1 h-op-09">Ask Question</a>
                 </div>
                 <div class="col-sm-auto">
-                    <select class="form-select" aria-label="Default select example">
-                        <option value="latest">Most Recent</option>
-                        <option value="popular">Popular</option>
-                    </select>
+                    <div class="d-sm-flex justify-content-sm-end align-items-center">
+                        <select class="form-select me-2" aria-label="Default select example">
+                            <option value="latest">Most Recent</option>
+                            <option value="popular">Popular</option>
+                        </select>    
+                        <button class="button button-border button-rounded button-small mx-0"><i class="icon-filter"></i></button>                
+                    </div>
                 </div>
             </div>
 

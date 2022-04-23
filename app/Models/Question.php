@@ -34,7 +34,7 @@ class Question extends Model
     public function url(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => route('question.show', $this->id)
+            get: fn ($value) => route('questions.show', $this->id)
         );
     }
 }

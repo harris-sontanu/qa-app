@@ -19,4 +19,5 @@ Route::get('/home', function () {
     return view('pages.home');
 })->name('home');
 
-Route::resource('/question', QuestionController::class);
+Route::get('/questions/ask', [QuestionController::class, 'create'])->name('questions.ask');
+Route::resource('/questions', QuestionController::class)->except(['create']);

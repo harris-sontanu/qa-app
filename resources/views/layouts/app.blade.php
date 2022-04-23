@@ -26,15 +26,15 @@
 
 	<!-- JavaScripts
 	============================================= -->
-	<script src="js/jquery.js"></script>
-	<script src="js/plugins.min.js"></script>
+	<script src="{{ asset('js/jquery.js') }}"></script>
+	<script src="{{ asset('js/plugins.min.js') }}"></script>
 
 	<!-- TinyMCE Plugin -->
-	<script src="js/components/tinymce/tinymce.min.js"></script>
+	<script src="{{ asset('js/components/tinymce/tinymce.min.js') }}"></script>
 
 	<!-- Footer Scripts
 	============================================= -->
-	<script src="js/functions.js"></script>
+	<script src="{{ asset('js/functions.js') }}"></script>
 
 	<script>
 		jQuery(document).ready( function(){
@@ -45,7 +45,7 @@
 			});
 
 			tinymce.init({
-				selector: '#post-message',
+				selector: '#body',
 				menubar: false,
 				setup: function(editor) {
 					editor.on('change', function(e) {

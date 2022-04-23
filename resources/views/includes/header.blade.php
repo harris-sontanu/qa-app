@@ -26,22 +26,14 @@
             <form method="POST" class="mb-0 row" action="{{ route('login') }}">
                 @csrf
                 <div class="col-12 form-group">
-                    <label class="nott ls0 fw-normal mb-1" for="email">Email:</label>
-                    <input type="email" id="email" class="form-control fw-semibold @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}">
-                    @error('email')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    <label class="nott ls0 fw-semibold mb-2" for="email">Your email</label>
+                    <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="email@site.com" value="{{ old('email') }}">
                 </div>
                 <div class="clear"></div>
                 <div class="col-12 form-group">
-                    <label class="nott ls0 fw-normal mb-1" for="password">Password:</label>
+                    <label class="nott ls0 fw-semibold mb-2" for="password">Password</label>
                     <div class="input-group">
-                        <input id="password" type="password" class="form-control fw-semibold border-end-0 @error('password') is-invalid @enderror" placeholder="Password">
-                        <button class="btn border" onclick="myFunction()" type="button"><i
-                                class="icon-line-eye text-smaller"></i></button>
-                        @error('password')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @endif
+                        <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="8+ characters required">
                     </div>
                 </div>
                 <div class="col-12 d-flex justify-content-between">
@@ -52,7 +44,7 @@
                     <a href="#" class="text-smaller fw-medium"><u>Forgot Password?</u></a>
                 </div>
                 <div class="col-12 mt-4">
-                    <button class="button button-large w-100 bg-alt py-2 rounded-1 fw-medium nott ls0 m-0" type="button">Login</button>
+                    <button id="login-button" class="button button-large w-100 bg-alt py-2 rounded-1 fw-medium nott ls0 m-0" type="button">Login</button>
                 </div>
             </form>
             <p class="mb-0 mt-4 text-center fw-semibold">Don't have an account? <a href="#"><u>Sign up</u></a></p>    
@@ -116,7 +108,10 @@
                             <div class="dropdown-menu dropdown-menu-end py-0 m-0" aria-labelledby="profilelink">
                                 <a class="dropdown-item" href="demo-forum-edit.html"><i class="icon-line-edit me-2"></i>Edit Profile</a>
                                 <a class="dropdown-item" href="demo-forum-single.html"><i class="icon-line-align-left me-2"></i>Your Topics</a>
-                                <a class="dropdown-item" href="demo-forum-signout.html"><i class="icon-line-log-out me-2"></i>Sign Out</a>
+                                <form method="POST" action="{{ route('logout') }}" class="mb-0">
+                                    @csrf
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"><i class="icon-line-log-out me-2"></i>Sign Out</a>
+                                </form>
                             </div>
                         </div>                        
                     @else                        

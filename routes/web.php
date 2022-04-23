@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/blog');
-Route::get('/home', function () {
-    return view('pages.home');
-})->name('home');
+Route::get('/home', HomeController::class)->name('home');
 
 Route::get('/questions/ask', [QuestionController::class, 'create'])->name('questions.ask');
 Route::resource('/questions', QuestionController::class)->except(['create']);

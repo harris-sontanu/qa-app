@@ -16,7 +16,7 @@
                 </div>
                 <div>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#modal-signin" class="button button-large border border-width-2 bg-alt py-2 rounded-1 fw-medium nott ls0 ms-0 ms-sm-1 h-op-09"><i class="icon-line-file-add"></i>Create A New Topic</a>
-                    <a href="{{ route('question.index') }}" class="button button-large button-border rounded-1 fw-medium nott h-bg-alt ls0 ms-0"><i class="icon-line-align-left"></i>Browse All Topics</a>
+                    <a href="{{ route('questions.index') }}" class="button button-large button-border rounded-1 fw-medium nott h-bg-alt ls0 ms-0"><i class="icon-line-align-left"></i>Browse All Topics</a>
                 </div>
             </div>
 
@@ -43,85 +43,48 @@
 
             <div class="row justify-content-center text-center mb-5">
                 <div class="col-xl-6 col-lg-8">
-                    <h3 class="display-4 fw-bolder mb-3">Latest Discussions</h3>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-signin" class="button button-small button-border button-rounded  mx-0">Create A New Topic</a>
+                    <h3 class="display-4 fw-bolder mb-3">Latest Questions</h3>
                 </div>
             </div>
 
             <div class="mw-md mx-auto">
                 <ul class="list-unstyled mb-4">
                     <li>
-                        <ul class="topic list-unstyled row mx-0 justify-content-between align-items-center">
-                            <li class="entry mb-0 col-sm-10">
-                                <h3 class="mb-0"><a href="demo-forum-single.html">Jump In Content When Using Include-Header Class</a></h3>
-                                <div class="entry-meta mt-1">
-                                    <ul>
-                                        <li><a href="#">40 mins ago</a></li>
-                                        <li><a href="#">4 Replies</a></li>
-                                        <li><a href="#" class="badge bg-info text-white">In Progress</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="col-sm-2">
-                                <div class="bbp-author">
-                                    <a href="#"><img alt="User" src="https://source.unsplash.com/WNoLnJo7tS8/120x120"></a>
-                                    <a href="#"><img alt="User" src="https://source.unsplash.com/jzY0KRJopEI/120x120"></a>
-                                    <a href="#"><img alt="User" src="demos/forum/images/user.png"></a>
-                                </div>
-                            </li>
-                        </ul>
+                        @if (count($latestQuestions) > 0)
 
-                        <ul class="topic odd list-unstyled row mx-0 justify-content-between align-items-center">
-                            <li class="entry mb-0 col-sm-10">
-                                <h3 class="mb-0"><a href="demo-forum-single.html">Open sub-menu touching menu-item name, instead of sub-menu-trigger only (mobile)</a></h3>
-                                <div class="entry-meta mt-1">
-                                    <ul>
-                                        <li><a href="#">3 days ago</a></li>
-                                        <li><a href="#">1 Replies</a></li>
-                                        <li><a href="#" class="badge bg-info text-white">In Progress</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="col-sm-2">
-                                <div class="bbp-author">
-                                    <a href="#"><img alt="User" src="https://source.unsplash.com/WZz1u5R5uT4/120x120"></a>
-                                    <a href="#"><img alt="User" src="demos/forum/images/user.png"></a>
-                                </div>
-                            </li>
-                        </ul>
+                            @foreach ($latestQuestions as $question)
+                                
+                                <ul class="topic list-unstyled row mx-0 justify-content-between align-items-center border-top-0">
+                                    <li class="entry mb-0">
+                                        <h3 class="mb-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
+                                        {{ Str::limit($question->body, 200) }}
+                                        <div class="mt-2 d-flex justify-content-between">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">javascript</span></a></li>
+                                                <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">laravel</span></a></li>
+                                                <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">php</span></a></li>
+                                            </ul>
+                                            <div class="text-end small">
+                                                <a href="#" class="text-default">
+                                                    <img class="align-text-bottom me-1" alt="{{ $question->user->name }}" src="demos/forum/images/user.png" width="16" height="16">
+                                                    {{ $question->user->name }}
+                                                </a>
+                                                <span class="text-muted">asked {{ $question->created_at->diffForHumans() }}</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
 
-                        <ul class="topic list-unstyled row mx-0 justify-content-between align-items-center">
-                            <li class="entry mb-0 col-sm-10">
-                                <h3 class="mb-0"><a href="demo-forum-single.html">Portfolio Overlay Slide fadein fadeout</a></h3>
-                                <div class="entry-meta mt-1">
-                                    <ul>
-                                        <li><a href="#">7 days ago</a></li>
-                                        <li><a href="#">21 Replies</a></li>
-                                        <li><a href="#" class="badge bg-success text-white">Solved</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="col-sm-2">
-                                <div class="bbp-author">
-                                    <a href="#"><img alt="User" src="https://source.unsplash.com/WZz1u5R5uT4/120x120"></a>
-                                    <a href="#"><img alt="User" src="https://source.unsplash.com/jzY0KRJopEI/120x120"></a>
-                                    <a href="#"><img alt="User" src="https://source.unsplash.com/WNoLnJo7tS8/120x120"></a>
-                                    <a href="#"><img alt="User" src="demos/forum/images/user.png"></a>
-                                </div>
-                            </li>
-                        </ul>
+                            @endforeach
+                            
+                        @else
+                            
+                        @endif
+                        
                     </li>
                 </ul>
-
-                <ul class="pagination justify-content-end">
-                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true"> <span class="op-05" aria-hidden="true">&laquo;</span></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                </ul>
+                
+                <div class="text-center"><a href="#" class="button button-small button-border button-rounded mx-0">Show more</a></div>
             </div>
 
         </div>

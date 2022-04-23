@@ -37,4 +37,9 @@ class Question extends Model
             get: fn ($value) => route('questions.show', $this->id)
         );
     }
+
+    public function scopePopular($query)
+    {
+        return $query->orderBy('votes', 'desc');
+    }
 }

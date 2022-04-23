@@ -13,10 +13,17 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $questions = Question::with('user')->latest()->paginate(5);
-        return view('pages.questions', compact('questions'));
+    public function index(Request $request)
+    {   
+        $questions = Question::with('user');
+        if ($sort = $request->sort AND $sort == 'latest') {
+            $questions = $questions->latest();
+        } else if ($sort = $request->sort AND $sort == 'popular') {
+            $questions = $questions->popular();
+        }
+        $questions = $questions->paginate(5)->withQueryString();
+        
+        return view('pages.questions', compact('questions', 'sort'));
     }
 
     /**

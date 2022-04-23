@@ -16,22 +16,34 @@
 <section id="content">
     <div class="content-wrap">
         <div class="container mw-md">
+            
+            @include('includes.message')
+
             <form class="row mb-0" action="{{ route('questions.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="col-12 form-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="e.g. Lorem ipsum dolor sit amet consectetuer adipiscing elit?" />
+                    <input type="text" name="title" id="title" class="form-control form-control-lg @error('title') is-invalid @enderror" placeholder="e.g. Lorem ipsum dolor sit amet consectetuer adipiscing elit?" value="{{ old('title') }}" />
+                    @error('title')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @endif
                 </div>
                 <div class="col-12 form-group mb-4">
                     <label for="body">Body</label>
-                    <textarea name="body" id="body" class="form-control" cols="30" rows="10"></textarea>
+                    <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror" cols="30" rows="10">{{ old('body') }}</textarea>
+                    @error('body')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @endif
                 </div>
                 <div class="clear"></div>
                 <div class="col-6 form-group">
                     <small class="text-muted">Maximum file size allowed is 2048 KB.</small>
                     <div class="form-file">
-                        <input type="file" class="form-control" id="file-input">
+                        <input type="file" name="doc" class="form-control @error('doc') is-invalid @enderror" id="file-input">
                     </div>
+                    @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @endif
                 </div>
                 <div class="clear"></div>
                 <div class="col-12 form-group mb-1">

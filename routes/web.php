@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/blog');
+Route::redirect('/', '/home');
 Route::get('/home', HomeController::class)->name('home');
 
-Route::get('/questions/ask', [QuestionController::class, 'create'])->name('questions.ask');
-Route::resource('/questions', QuestionController::class)->except(['create']);
+Route::get('/questions/ask', [QuestionController::class, 'create'])
+    ->name('questions.ask');
+Route::resource('/questions', QuestionController::class)
+    ->except(['create']);

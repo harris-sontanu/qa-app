@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AskQuestionRequest;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,22 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AskQuestionRequest $request)
     {
-        //
+        $validated = $this->handleRequest($request);
+    }
+
+    private function handleRequest($request)
+    {
+        $data = $request->validated();
+
+        if ($request->hasFile('doc')) {
+            $attachment = $request->file('doc');
+            $path = $attachment->store('attachment', 'public');
+            $data['attachment'] = $path;
+        }
+
+        return $data;
     }
 
     /**

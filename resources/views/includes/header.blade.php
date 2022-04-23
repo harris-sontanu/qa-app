@@ -48,7 +48,7 @@
                     <!-- Top Account
                     ============================================= -->
                     <div class="header-misc-icon profile-image">
-                        <a href="#" id="profilelink" data-bs-toggle="dropdown" data-bs-offset="0,15" aria-haspopup="true" aria-expanded="false" data-offset="12,12"><img class="rounded-circle" src="demos/forum/images/user.png" alt="User"></a>
+                        <a href="#" id="profilelink" data-bs-toggle="dropdown" data-bs-offset="0,15" aria-haspopup="true" aria-expanded="false" data-offset="12,12"><img class="rounded-circle" src="{{ asset('demos/forum/images/user.png') }}" alt="User"></a>
                         <div class="dropdown-menu dropdown-menu-end py-0 m-0" aria-labelledby="profilelink">
                             <a class="dropdown-item" href="demo-forum-edit.html"><i class="icon-line-edit me-2"></i>Edit Profile</a>
                             <a class="dropdown-item" href="demo-forum-single.html"><i class="icon-line-align-left me-2"></i>Your Topics</a>

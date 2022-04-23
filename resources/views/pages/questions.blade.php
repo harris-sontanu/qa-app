@@ -37,6 +37,9 @@
             </div>
 
             <div class="mw-md mx-auto">
+            
+                @include('includes.message')
+                
                 <ul class="list-unstyled mb-4">
                     <li>
                         @if (count($questions) > 0)

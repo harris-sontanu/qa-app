@@ -16,8 +16,6 @@
 <section id="content">
     <div class="content-wrap">
         <div class="container mw-md">
-            
-            @include('includes.message')
 
             <form class="row mb-0" action="{{ route('questions.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -65,6 +63,7 @@
                     <button type="button" data-bs-dismiss="modal" aria-label="Close" class="button button-large button-border border-default h-bg-danger rounded-1 fw-medium nott ls0 ms-0">Cancel</button>
                 </div>
             </form>
+            
         </div>
     </div>
 </section><!-- #content end -->

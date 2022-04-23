@@ -38,6 +38,9 @@ class QuestionController extends Controller
     public function store(AskQuestionRequest $request)
     {
         $validated = $this->handleRequest($request);
+        $request->user()->questions()->create($validated);
+
+        return redirect()->route('questions.index')->with('success', "Your question has been submitted");
     }
 
     private function handleRequest($request)

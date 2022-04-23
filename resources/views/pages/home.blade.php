@@ -15,7 +15,7 @@
                     <button class="btn btn-light border-0" type="submit"><i class="icon-line-search"></i></button>
                 </div>
                 <div>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-signin" class="button button-large border border-width-2 bg-alt py-2 rounded-1 fw-medium nott ls0 ms-0 ms-sm-1 h-op-09"><i class="icon-line-file-add"></i>Create A New Topic</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-signin" class="button button-large border border-width-2 bg-alt py-2 rounded-1 fw-medium nott ls0 ms-0 ms-sm-1 h-op-09"><i class="icon-line-file-add"></i>Ask A Question</a>
                     <a href="{{ route('questions.index') }}" class="button button-large button-border rounded-1 fw-medium nott h-bg-alt ls0 ms-0"><i class="icon-line-align-left"></i>Browse All Topics</a>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     </li>
                 </ul>
                 
-                <div class="text-center"><a href="#" class="button button-small button-border button-rounded mx-0">Show more</a></div>
+                <div class="text-center"><a href="{{ route('questions.index') }}" class="button button-small button-border button-rounded mx-0">Show more</a></div>
             </div>
 
         </div>

@@ -80,7 +80,7 @@
                                                 <div class="col-lg-10">
                                                     <div class="title d-flex">
                                                         <h3 class="mb-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
-                                                        <a href="{{ route('questions.edit', $question->id) }}" class="py-1 small ms-auto">edit</a>
+                                                        <a href="{{ route('questions.edit', $question->slug) }}" class="py-1 small ms-auto">edit</a>
                                                     </div>
                                                     {{ $question->excerpt }}
                                                     <div class="mt-2 d-flex justify-content-between">

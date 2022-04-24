@@ -21,7 +21,4 @@ Route::get('/home', HomeController::class)->name('home');
 Route::get('/questions/ask', [QuestionController::class, 'create'])
     ->name('questions.ask');
 Route::resource('/questions', QuestionController::class)
-    ->except(['create'])
-    ->parameters([
-        'question' => 'question:slug'
-    ]);
+    ->except(['create']);

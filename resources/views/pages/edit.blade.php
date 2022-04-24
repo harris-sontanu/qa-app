@@ -42,6 +42,7 @@
                 <div class="clear"></div>
                 @if ( ! empty($question->attachment))
                     <div class="col-6 form-group">
+                        <label>Attachment</label>
                         <a href="{{ $question->attachment_url }}" class="button button-small button-rounded button-border m-0"><i class="icon-file-{{ $question->attachment_ext }} me-1"></i>{{ $question->attachment_name }}</a>
                     </div>
                 @else

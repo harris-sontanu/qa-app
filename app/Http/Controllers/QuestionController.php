@@ -19,7 +19,7 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
+    {
         $questions = Question::with('user');
         if ($sort = $request->sort AND $sort == 'latest') {
             $questions = $questions->latest();
@@ -29,7 +29,7 @@ class QuestionController extends Controller
             $questions = $questions->latest();
         }
         $questions = $questions->paginate(5)->withQueryString();
-        
+
         return view('pages.questions', compact('questions', 'sort'));
     }
 
@@ -78,7 +78,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        
+        dd($question);
     }
 
     /**
@@ -103,7 +103,7 @@ class QuestionController extends Controller
     {
         $validated  = $this->handleRequest($request);
         $question->update($validated);
-        
+
         return redirect()->route('questions.index')->with('success', "Your question has been updated");
     }
 

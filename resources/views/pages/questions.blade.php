@@ -79,7 +79,7 @@
                                                 </div>
                                                 <div class="col-lg-10">
                                                     <h3 class="mb-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
-                                                    {{ Str::limit($question->body, 200) }}
+                                                    {{ $question->excerpt }}
                                                     <div class="mt-2 d-flex justify-content-between">
                                                         <ul class="list-inline">
                                                             <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">javascript</span></a></li>

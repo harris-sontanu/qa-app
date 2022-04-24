@@ -40,6 +40,13 @@ class Question extends Model
         );
     }
 
+    public function excerpt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Str::limit(strip_tags($this->body), 200)
+        );
+    }
+
     public function scopePopular($query)
     {
         $last7days = Carbon::now()->subDays(7);

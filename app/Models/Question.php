@@ -50,6 +50,7 @@ class Question extends Model
     public function scopePopular($query)
     {
         $last7days = Carbon::now()->subDays(7);
+        
         return $query->where('created_at', '>=', $last7days)
                     ->orderBy('votes', 'desc');
     }

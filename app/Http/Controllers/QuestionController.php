@@ -78,8 +78,10 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Question $question)
-    {
-        dd($question);
+    {   
+        $question->increment('views');
+        
+        return view('pages.show', compact('question'));
     }
 
     /**
@@ -125,7 +127,8 @@ class QuestionController extends Controller
 
     private function removeAttachmentFile($attachment)
     {
-        if (Storage::disk('public')->exists($attachment)) {
+        if (Storage::disk('public')->exists($attachment)) 
+        {
             Storage::disk('public')->delete($attachment);
         }
     }

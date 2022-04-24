@@ -42,9 +42,9 @@
                 <div class="clear"></div>
                 @if ( ! empty($question->attachment))
                     <div class="col-6 form-group">
-                        <a href="{{ $question->attachment_url }}" class="button button-small button-rounded button-border m-0"><i class="icon-file-pdf me-1"></i>{{ $question->attachment_name }}</a>
+                        <a href="{{ $question->attachment_url }}" class="button button-small button-rounded button-border m-0"><i class="icon-file-{{ $question->attachment_ext }} me-1"></i>{{ $question->attachment_name }}</a>
                     </div>
-                @else                    
+                @else
                     <div class="col-6 form-group">
                         <small class="text-muted">Maximum file size allowed is 2048 KB.</small>
                         <div class="form-file">

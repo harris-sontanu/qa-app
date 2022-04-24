@@ -50,7 +50,7 @@ class Question extends Model
     }
 
     public function attachmentUrl(): Attribute
-    {   
+    {
         $attachmentUrl = '';
         if (!is_null($this->attachment)) {
             if (Storage::disk('public')->exists($this->attachment)) $attachmentUrl = Storage::url($this->attachment);
@@ -62,14 +62,12 @@ class Question extends Model
     }
 
     public function attachmentName(): Attribute
-    {   
+    {
         $attachmentName = '';
         if (!is_null($this->attachment)) {
             $array = Str::of($this->attachment)->explode('/');
             $array = $array->toArray();
-            end($array);
-            $key = key($array);
-            $attachmentName = $array[$key];
+            $attachmentName = last($array);
         }
 
         return Attribute::make(
@@ -77,10 +75,24 @@ class Question extends Model
         );
     }
 
+    public function attachmentExt(): Attribute
+    {
+        $attachmentExt = '';
+        if (!is_null($this->attachment)) {
+            $array = Str::of($this->attachment)->explode('.');
+            $array = $array->toArray();
+            $attachmentExt = last($array);
+        }
+
+        return Attribute::make(
+            get: fn ($value) => $attachmentExt,
+        );
+    }
+
     public function scopePopular($query)
     {
         $last7days = Carbon::now()->subDays(7);
-        
+
         return $query->where('created_at', '>=', $last7days)
                     ->orderBy('votes', 'desc');
     }

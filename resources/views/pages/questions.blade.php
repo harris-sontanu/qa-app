@@ -80,7 +80,16 @@
                                                 <div class="col-lg-10">
                                                     <div class="title d-flex">
                                                         <h3 class="mb-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
-                                                        <a href="{{ route('questions.edit', $question->slug) }}" class="py-1 small ms-auto">edit</a>
+                                                        <div class="ms-auto ps-2">
+                                                            <form action="{{ route('questions.destroy', $question->slug) }}" method="post" class="mb-0">
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                                                    <a href="{{ route('questions.edit', $question->slug) }}" class="btn btn-light text-warning">edit</a>
+                                                                    <button type="submit" class="btn btn-light text-danger" onclick="return confirm('Are you sure?')">delete</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                     {{ $question->excerpt }}
                                                     <div class="mt-2 d-flex justify-content-between">

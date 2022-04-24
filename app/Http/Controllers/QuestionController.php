@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AskQuestionRequest;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class QuestionController extends Controller
 {
@@ -115,6 +116,17 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $attachment = $question->attachment;
+        $question->delete();
+        if (!empty($attachment)) $this->removeAttachmentFile($attachment);
+
+        return redirect()->route('questions.index')->with('success', "Your question has been deleted");
+    }
+
+    private function removeAttachmentFile($attachment)
+    {
+        if (Storage::disk('public')->exists($attachment)) {
+            Storage::disk('public')->delete($attachment);
+        }
     }
 }

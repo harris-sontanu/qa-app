@@ -22,7 +22,7 @@
     <div class="content-wrap">
         <div class="container mw-md">
 
-            <form class="row mb-0" action="{{ route('questions.update', $question->id) }}" method="post" novalidate enctype="multipart/form-data">
+            <form class="row mb-0" action="{{ route('questions.update', $question->slug) }}" method="post" novalidate enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="col-12 form-group">

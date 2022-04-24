@@ -78,7 +78,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        
     }
 
     /**
@@ -89,7 +89,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view('pages.edit', compact('question'));
     }
 
     /**
@@ -99,9 +99,12 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(AskQuestionRequest $request, Question $question)
     {
-        //
+        $validated  = $this->handleRequest($request);
+        $question->update($validated);
+        
+        return redirect()->route('questions.index')->with('success', "Your question has been updated");
     }
 
     /**

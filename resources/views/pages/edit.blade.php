@@ -40,15 +40,21 @@
                     @endif
                 </div>
                 <div class="clear"></div>
-                <div class="col-6 form-group">
-                    <small class="text-muted">Maximum file size allowed is 2048 KB.</small>
-                    <div class="form-file">
-                        <input type="file" name="doc" class="form-control @error('doc') is-invalid @enderror" id="file-input">
+                @if ( ! empty($question->attachment))
+                    <div class="col-6 form-group">
+                        <a href="{{ $question->attachment_url }}" class="button button-small button-rounded button-border m-0"><i class="icon-file-pdf me-1"></i>{{ $question->attachment_name }}</a>
                     </div>
-                    @error('image')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
-                </div>
+                @else                    
+                    <div class="col-6 form-group">
+                        <small class="text-muted">Maximum file size allowed is 2048 KB.</small>
+                        <div class="form-file">
+                            <input type="file" name="doc" class="form-control @error('doc') is-invalid @enderror" id="file-input">
+                        </div>
+                        @error('image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @endif
+                    </div>
+                @endif
                 <div class="clear"></div>
                 <div class="col-12 form-group mb-1">
                     <div class="form-check form-check-inline">
@@ -64,9 +70,8 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <button type="submit" name="submit" class="button button-large bg-alt border border-width-2 rounded-1 fw-medium nott ls0 ms-0">Update</button>
-
-                    <button type="button" class="button button-large button-border border-default h-bg-danger rounded-1 fw-medium nott ls0 ms-0">Cancel</button>
+                    <button type="submit" class="button button-large bg-alt border border-width-2 rounded-1 fw-medium nott ls0 ms-0">Update</button>
+                    <a href="{{ route('questions.index') }}" class="button button-large button-border border-default h-bg-danger rounded-1 fw-medium nott ls0 ms-0">Cancel</a>
                 </div>
             </form>
 

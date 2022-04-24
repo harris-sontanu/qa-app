@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Arr;
 
 class Question extends Model
 {
@@ -44,6 +46,34 @@ class Question extends Model
     {
         return Attribute::make(
             get: fn ($value) => Str::limit(strip_tags($this->body), 200)
+        );
+    }
+
+    public function attachmentUrl(): Attribute
+    {   
+        $attachmentUrl = '';
+        if (!is_null($this->attachment)) {
+            if (Storage::disk('public')->exists($this->attachment)) $attachmentUrl = Storage::url($this->attachment);
+        }
+
+        return Attribute::make(
+            get: fn ($value) => $attachmentUrl,
+        );
+    }
+
+    public function attachmentName(): Attribute
+    {   
+        $attachmentName = '';
+        if (!is_null($this->attachment)) {
+            $array = Str::of($this->attachment)->explode('/');
+            $array = $array->toArray();
+            end($array);
+            $key = key($array);
+            $attachmentName = $array[$key];
+        }
+
+        return Attribute::make(
+            get: fn ($value) => $attachmentName,
         );
     }
 

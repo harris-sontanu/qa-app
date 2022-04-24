@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 class Question extends Model
 {
@@ -13,7 +14,8 @@ class Question extends Model
 
     protected $fillable = [
         'title',
-        'body'
+        'body',
+        'attachment'
     ];
 
     public function user()
@@ -40,6 +42,8 @@ class Question extends Model
 
     public function scopePopular($query)
     {
-        return $query->orderBy('votes', 'desc');
+        $last7days = Carbon::now()->subDays(7);
+        return $query->where('created_at', '>=', $last7days)
+                    ->orderBy('votes', 'desc');
     }
 }

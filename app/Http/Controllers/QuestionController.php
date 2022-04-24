@@ -20,6 +20,8 @@ class QuestionController extends Controller
             $questions = $questions->latest();
         } else if ($sort = $request->sort AND $sort == 'popular') {
             $questions = $questions->popular();
+        } else {
+            $questions = $questions->latest();
         }
         $questions = $questions->paginate(5)->withQueryString();
         

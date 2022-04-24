@@ -10,12 +10,14 @@
             <div class="col-lg-6 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
                 <p class="mb-3 text-larger fw-light">Hello, <strong class="fw-bold"><u>SemiColonWeb</u></strong></p>
                 <h2 class="display-4" style="font-weight: 800">Welcome to our Canvas Community.</h2>
-                <div class="input-group input-group-lg mt-2 mb-4">
-                    <input class="form-control rounded-start border-0" type="search" placeholder="Search Your Topics.." aria-label="Search">
-                    <button class="btn btn-light border-0" type="submit"><i class="icon-line-search"></i></button>
-                </div>
+                <form action="{{ route('questions.index') }}" method="get">
+                    <div class="input-group input-group-lg mt-2 mb-4">
+                        <input class="form-control rounded-start border-0" name="q" type="search" placeholder="Search Your Topics.." aria-label="Search">
+                        <button class="btn btn-light border-0" type="submit"><i class="icon-line-search"></i></button>
+                    </div>
+                </form>
                 <div>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-signin" class="button button-large border border-width-2 bg-alt py-2 rounded-1 fw-medium nott ls0 ms-0 ms-sm-1 h-op-09"><i class="icon-line-file-add"></i>Ask A Question</a>
+                    <a href="{{ route('questions.ask') }}" class="button button-large border border-width-2 bg-alt py-2 rounded-1 fw-medium nott ls0 ms-0 ms-sm-1 h-op-09"><i class="icon-line-file-add"></i>Ask A Question</a>
                     <a href="{{ route('questions.index') }}" class="button button-large button-border rounded-1 fw-medium nott h-bg-alt ls0 ms-0"><i class="icon-line-align-left"></i>Browse All Topics</a>
                 </div>
             </div>

@@ -107,7 +107,7 @@
                             <a href="#" id="profilelink" data-bs-toggle="dropdown" data-bs-offset="0,15" aria-haspopup="true" aria-expanded="false" data-offset="12,12"><img class="rounded-circle" src="{{ asset('demos/forum/images/user.png') }}" alt="User"></a>
                             <div class="dropdown-menu dropdown-menu-end py-0 m-0" aria-labelledby="profilelink">
                                 <a class="dropdown-item" href="demo-forum-edit.html"><i class="icon-line-edit me-2"></i>Edit Profile</a>
-                                <a class="dropdown-item" href="demo-forum-single.html"><i class="icon-line-align-left me-2"></i>Your Topics</a>
+                                <a class="dropdown-item" href="demo-forum-single.html"><i class="icon-line-align-left me-2"></i>Your Questions</a>
                                 <form method="POST" action="{{ route('logout') }}" class="mb-0">
                                     @csrf
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"><i class="icon-line-log-out me-2"></i>Sign Out</a>
@@ -133,7 +133,7 @@
                     <ul class="menu-container">
                         <li class="menu-item current"><a class="menu-link" href="{{ route('home') }}"><div>Home</div></a></li>
                         <li class="menu-item"><a class="menu-link" href="{{ route('questions.index') }}"><div>Questions</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-signin"><div>Create</div></a></li>
+                        <li class="menu-item"><a class="menu-link" href="{{ route('questions.ask') }}"><div>Create</div></a></li>
                         <li class="menu-item"><a class="menu-link" href="demo-forum-profile.html"><div>Profile</div></a></li>
                         <li class="menu-item"><a class="menu-link" href="demo-forum-search-result.html"><div>Search Page</div></a></li>
                     </ul>

@@ -106,7 +106,7 @@
                                                         </ul>
                                                         <div class="text-end small">
                                                             <a href="#" class="text-default">
-                                                                <img class="align-text-bottom me-1" alt="{{ $question->user->name }}" src="demos/forum/images/user.png" width="16" height="16">
+                                                                <img class="align-text-bottom me-1" alt="{{ $question->user->name }}" src="{{ $question->user->avatar(16) }}" width="16" height="16">
                                                                 {{ $question->user->name }}
                                                             </a>
                                                             <span class="text-muted">asked {{ $question->created_at->diffForHumans() }}</span>

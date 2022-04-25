@@ -26,7 +26,7 @@
                 <div class="row g-0 justify-content-between align-items-center border-top border-bottom py-3 mb-4">
                     <div class="col-9">
                         <div class="d-flex align-items-center">
-                            <img src="{{ $question->user->avatar() }}" alt="Author" class="rounded-circle me-2" width="50" height="50">
+                            <img src="{{ $question->user->avatar(64, 0.33) }}" alt="Author" class="rounded-circle me-2" width="50" height="50">
                             <div>
                                 <h5 class="mb-0 h6 fw-semibold"><a class="text-dark" href="#">{{ $question->user->name }}</a></h5>
                                 <small class="text-muted mb-0 fw-normal">{{ $question->created_at->format('l, j F Y, H:i') }}</small>
@@ -81,7 +81,7 @@
                     <div class="row g-0 justify-content-between align-items-center border-bottom @if (!empty($question->best_answer_id)) border-color border-top py-3 @else border-default pb-3 @endif mb-4">
                         <div class="col-9">
                             <div class="d-flex align-items-center">
-                                <img src="{{ $answer->user->avatar() }}" alt="Author" class="rounded-circle me-2" width="50" height="50">
+                                <img src="{{ $answer->user->avatar(64, 0.33) }}" alt="Author" class="rounded-circle me-2" width="50" height="50">
                                 <div>
                                     <h5 class="mb-0 h6 fw-semibold align-middle"><a class="text-dark" href="#">{{ $answer->user->name }}</a></h5>
                                     <small class="text-muted mb-0 fw-normal">{{ $answer->created_at->format('l, j F Y, H:i') }}</small>

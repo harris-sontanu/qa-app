@@ -21,7 +21,7 @@
 <section id="content">
     <div class="content-wrap">
         <div class="container mw-md">
-            
+
             <div class="topic-post">
                 <div class="row g-0 justify-content-between align-items-center border-top border-bottom py-3 mb-4">
                     <div class="col-9">
@@ -56,14 +56,16 @@
                     <hr>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-2 col-md-3 col-4">
-                        <h4 class="mb-3">Attachment</h4>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a href="{{ $question->attachment_url }}" class="button button-small button-rounded button-border m-0"><i class="icon-file-{{ $question->attachment_ext }} me-1"></i>{{ $question->attachment_name }}</a>
+                @if (!empty($question->attachment))
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-4">
+                            <h4 class="mb-3">Attachment</h4>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <a href="{{ $question->attachment_url }}" class="button button-small button-rounded button-border m-0"><i class="icon-file-{{ $question->attachment_ext }} me-1"></i>{{ $question->attachment_name }}</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
 
             <div class="topic-post reply mt-5 p-4 p-md-5 border-top border-width-5 border-color">

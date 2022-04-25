@@ -85,8 +85,12 @@
                                                                 @method('DELETE')
                                                                 @csrf
                                                                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                                                    <a href="{{ route('questions.edit', $question->slug) }}" class="btn btn-light text-warning">edit</a>
-                                                                    <button type="submit" class="btn btn-light text-danger" onclick="return confirm('Are you sure?')">delete</button>
+                                                                    @if (Auth::user()->can('update', $question))
+                                                                        <a href="{{ route('questions.edit', $question->slug) }}" class="btn btn-light text-warning">edit</a>
+                                                                    @endif
+                                                                    @if (Auth::user()->can('delete', $question))
+                                                                        <button type="submit" class="btn btn-light text-danger" onclick="return confirm('Are you sure?')">delete</button>
+                                                                    @endif
                                                                 </div>
                                                             </form>
                                                         </div>

@@ -12,6 +12,7 @@ class QuestionController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
+        // $this->authorizeResource(Question::class, 'question');
     }
 
     /**
@@ -92,6 +93,8 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
+        $this->authorize('update', $question);
+
         return view('pages.edit', compact('question'));
     }
 
@@ -104,6 +107,7 @@ class QuestionController extends Controller
      */
     public function update(AskQuestionRequest $request, Question $question)
     {
+        $this->authorize('update', $question);
         $validated  = $this->handleRequest($request);
         $question->update($validated);
 
@@ -118,6 +122,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
+        $this->authorize('delete', $question);
         $attachment = $question->attachment;
         $question->delete();
         if (!empty($attachment)) $this->removeAttachmentFile($attachment);

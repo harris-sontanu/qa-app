@@ -16,8 +16,14 @@ class AnswerFactory extends Factory
      */
     public function definition()
     {
+        $paragraphs = $this->faker->paragraphs(rand(3, 7));
+        $body = '';
+        foreach ($paragraphs as $paragraph) {
+            $body .= '<p>' . $paragraph . '</p>';
+        }
+
         return [            
-            'body'      => $this->faker->paragraphs(rand(3, 7), true),
+            'body'          => $body,
             'votes_count'   => rand(1, 5)
         ];
     }

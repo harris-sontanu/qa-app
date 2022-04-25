@@ -17,9 +17,15 @@ class QuestionFactory extends Factory
      */
     public function definition()
     {
+        $paragraphs = $this->faker->paragraphs(rand(4, 10));
+        $body = '';
+        foreach ($paragraphs as $paragraph) {
+            $body .= '<p>' . $paragraph . '</p>';
+        }
+
         return [
             'title'     => Str::of($this->faker->sentence(rand(5, 10)))->rtrim('.'),
-            'body'      => $this->faker->paragraphs(rand(3, 7), true),
+            'body'      => $body,
             'views'     => rand(0, 10),
             // 'answers_count'   => rand(0, 10),
             'votes'     => rand(-3, 10)

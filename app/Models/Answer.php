@@ -18,4 +18,20 @@ class Answer extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function ($answer) {
+            $answer->question->increment('answers_count');
+        });
+
+        static::deleted(function ($answer) {
+            $answer->question->decrement('answers_count');
+        });
+    }
 }

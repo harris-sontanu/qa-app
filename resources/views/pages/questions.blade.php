@@ -60,17 +60,17 @@
                                                     <div class="vote mb-2">
                                                         <strong>{{ $question->votes }}</strong> votes
                                                     </div>
-                                                    @if ($question->answers > 0 && !empty($question->best_answer_id))
+                                                    @if ($question->answers_count > 0 && !empty($question->best_answer_id))
                                                         <div class="status mb-2">
-                                                            <span class="bg-success rounded text-white px-2 py-1"><i class="icon-check me-1"></i><strong>{{ $question->answers }}</strong> answers</span>
+                                                            <span class="bg-success rounded text-white px-2 py-1"><i class="icon-check me-1"></i><strong>{{ $question->answers_count }}</strong> answers</span>
                                                         </div>
-                                                    @elseif ($question->answers > 0 && empty($question->best_answer_id))
+                                                    @elseif ($question->answers_count > 0 && empty($question->best_answer_id))
                                                         <div class="status mb-2">
-                                                            <span class="border border-success rounded text-success px-2 py-1"><strong>{{ $question->answers }}</strong> answers</span>
+                                                            <span class="border border-success rounded text-success px-2 py-1"><strong>{{ $question->answers_count }}</strong> answers</span>
                                                         </div>
                                                     @else
                                                         <div class="status mb-2">
-                                                            <strong>{{ $question->answers }}</strong> answers
+                                                            <strong>{{ $question->answers_count }}</strong> answers
                                                         </div>
                                                     @endif
                                                     <div class="view text-muted">

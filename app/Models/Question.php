@@ -105,4 +105,9 @@ class Question extends Model
         return $query->where('created_at', '>=', $last7days)
                     ->orderBy('votes', 'desc');
     }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

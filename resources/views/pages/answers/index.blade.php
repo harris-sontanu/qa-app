@@ -2,7 +2,7 @@
 
     @include('partials.message')
 
-    @foreach ($answers as $answer)                
+    @foreach ($answers as $answer)
         <div class="topic-post d-flex @if (!empty($question->best_answer_id)) reply border-color @else bg-light border-default @endif mt-5 p-4 p-md-5 border-top border-width-5">
             <div class="flex-column me-4 text-center">
                 <a href="#" class="vote-up" title="This Answer is useful"><i class="icon-caret-up1"></i></a>
@@ -32,18 +32,24 @@
                         </div>
                     </div>
 
+                    @if (Auth::check() AND (Auth::user()->can('update', $answer) OR Auth::user()->can('delete', $answer)))
                     <div class="col-auto">
                         <a href="#" id="editlink2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-line-ellipsis icon-2x alt-color"></i></a>
                         <div class="dropdown-menu dropdown-menu-links rounded shadow-sm dropdown-menu-end py-0 m-0" aria-labelledby="editlink2">
-                            <a class="dropdown-item rounded-top" href="#"><i class="icon-line-edit me-2"></i>Edit</a>
-                            <a class="dropdown-item" href="#"><i class="icon-line-circle-cross me-2"></i>Close</a>
-                            <a class="dropdown-item" href="#"><i class="icon-line-arrow-up me-2"></i>Stick On Top</a>
-                            <a class="dropdown-item" href="#"><i class="icon-line-git-merge me-2"></i>Merge</a>
-                            <a class="dropdown-item" href="#"><i class="icon-line-trash-2 me-2"></i>Trash</a>
-                            <a class="dropdown-item" href="#"><i class="icon-line-alert-triangle me-2"></i>Spam</a>
-                            <a class="dropdown-item" href="#message-reply" data-scrollto="#message-reply"><i class="icon-line-corner-up-left me-2"></i>Reply</a>
+                            @if (Auth::user()->can('update', $answer))
+                                <a class="dropdown-item rounded-top" href="{{ route('questions.answers.edit', [$question->slug, $answer->id]) }}"><i class="icon-line-edit me-2"></i>Edit</a>
+                            @endif
+                            @if (Auth::user()->can('delete', $answer))
+                            <form action="{{ route('questions.answers.destroy', [$question->slug, $answer->id]) }}" method="post" class="mb-0">
+                                @method('DELETE')
+                                @csrf
+                                <button class="dropdown-item" type="submit"><i class="icon-line-trash-2 me-2"></i>Delete</button>
+                            </form>
+                            @endif
                         </div>
                     </div>
+                    @endif
+
                 </div>
 
                 {!! $answer->body !!}

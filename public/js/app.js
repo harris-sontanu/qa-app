@@ -2176,13 +2176,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-jQuery(document).ready(function () {
-  $('input[type="file"]').change(function (e) {
-    var fileName = e.target.files[0].name;
-    $('.custom-file-label').html(fileName);
-  });
+$(function () {
   tinymce.init({
-    selector: '#body',
+    selector: '.tinymce',
     menubar: false,
     setup: function setup(editor) {
       editor.on('change', function (e) {

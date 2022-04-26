@@ -129,7 +129,7 @@
                 <h3 class="h2 fw-bolder mb-4">Reply to the Message</h3>
                 <form class="row" action="#" method="post" enctype="multipart/form-data">
                     <div class="col-12 form-group mb-4">
-                        <textarea name="post-message" id="post-message" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="post-message" id="post-message" class="form-control tinymce" cols="30" rows="10"></textarea>
                     </div>
                     <div class="clear"></div>
                     <div class="col-6 form-group">

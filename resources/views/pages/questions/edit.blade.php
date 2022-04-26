@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-12 form-group mb-4">
                     <label for="body">Body</label>
-                    <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror" cols="30" rows="10">{{ $question->body }}</textarea>
+                    <textarea name="body" id="body" class="form-control tinymce @error('body') is-invalid @enderror" cols="30" rows="10">{{ $question->body }}</textarea>
                     @error('body')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @endif

@@ -1,6 +1,6 @@
 <div class="topic-form mt-5">
     <h3 class="h2 fw-bolder mb-4">Reply to the Message</h3>
-    <form class="row" action="#" method="post" enctype="multipart/form-data">
+    <form class="row" action="{{ route('answer.store') }}" method="post" enctype="multipart/form-data">
         <div class="col-12 form-group mb-4">
             <textarea name="post-message" id="post-message" class="form-control tinymce" cols="30" rows="10"></textarea>
         </div>

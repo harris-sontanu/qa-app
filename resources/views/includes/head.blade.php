@@ -1,5 +1,6 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="author" content="SemiColonWeb" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <!-- Stylesheets
 ============================================= -->
@@ -13,15 +14,14 @@
 <link rel="stylesheet" href="{{ asset('css/animate.css') }}" type="text/css" />
 <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css" />
 
-<link rel="stylesheet" href="{{ asset('css/custom.css') }}" type="text/css" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
 <link rel="stylesheet" href="{{ asset('css/colors.php?color=F9BE79') }}" type="text/css" />
 
 <!-- Forum Demo Specific Stylesheet -->
 <link rel="stylesheet" href="{{ asset('demos/forum/forum.css') }}" type="text/css" /> <!-- Forum Custom Css -->
 <link rel="stylesheet" href="{{ asset('demos/forum/css/fonts.css') }}" type="text/css" /> <!-- Forum Custom Fonts -->
 <!-- / -->
+
+<link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css" />
 
 <!-- Document Title
 ============================================= -->

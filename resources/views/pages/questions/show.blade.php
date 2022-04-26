@@ -78,7 +78,7 @@
                 'answers'   => $question->answers
             ])
 
-            @include('pages.answers.create')
+            @include('pages.answers.create', ['questionSlug' => $question->slug])
 
         </div>
     </div>

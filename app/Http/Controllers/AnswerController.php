@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -14,9 +21,18 @@ class AnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Question $question, Request $request)
     {
-        //
+        $request->validate([
+            'body'  => 'required|min:3'
+        ]);
+
+        $question->answers()->create([
+                'body' => $request->body,
+                'user_id'   => Auth::id()
+        ]);
+
+        return back()->with('success', "Your answer has been submitted successfully");
     }
 
     /**

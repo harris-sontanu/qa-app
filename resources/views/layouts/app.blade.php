@@ -3,7 +3,7 @@
 
 <head>
 
-    @include('includes.head')
+    @include('layouts.head')
 
 </head>
 
@@ -12,11 +12,11 @@
     <!-- Document Wrapper ============================================= -->
     <div id="wrapper" class="clearfix">
 
-        @include('includes.header')
+        @include('layouts.header')
 
         @yield('content')
 
-        @include('includes.footer')
+        @include('layouts.footer')
 
     </div><!-- #wrapper end -->
 

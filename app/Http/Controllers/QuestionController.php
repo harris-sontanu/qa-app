@@ -32,7 +32,7 @@ class QuestionController extends Controller
         }
         $questions = $questions->paginate(5)->withQueryString();
 
-        return view('pages.questions', compact('questions', 'sort'));
+        return view('pages.questions.index', compact('questions', 'sort'));
     }
 
     /**
@@ -42,7 +42,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('pages.ask');
+        return view('pages.questions.ask');
     }
 
     /**
@@ -82,7 +82,7 @@ class QuestionController extends Controller
     {   
         $question->increment('views');
         
-        return view('pages.show', compact('question'));
+        return view('pages.questions.show', compact('question'));
     }
 
     /**
@@ -95,7 +95,7 @@ class QuestionController extends Controller
     {
         $this->authorize('update', $question);
 
-        return view('pages.edit', compact('question'));
+        return view('pages.questions.edit', compact('question'));
     }
 
     /**

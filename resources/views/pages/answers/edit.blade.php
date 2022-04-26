@@ -23,6 +23,7 @@
         <div class="container mw-md">
 
             <form class="row mb-0" action="{{ route('questions.answers.update', [$question->slug, $answer->id]) }}" method="post" enctype="multipart/form-data">
+                @method('PUT')
                 @csrf
                 <div class="col-12 form-group mb-4">
                     <label for="body">Body</label>

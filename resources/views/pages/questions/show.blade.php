@@ -41,19 +41,25 @@
                                 </div>
                             </div>
                         </div>
-    
-                        <div class="col-auto">
-                            <a href="#" id="editlink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-line-ellipsis icon-2x alt-color"></i></a>
-                            <div class="dropdown-menu dropdown-menu-links rounded shadow-sm dropdown-menu-end py-0 m-0" aria-labelledby="editlink">
-                                <a class="dropdown-item rounded-top" href="#"><i class="icon-line-edit me-2"></i>Edit</a>
-                                <a class="dropdown-item" href="#"><i class="icon-line-circle-cross me-2"></i>Close</a>
-                                <a class="dropdown-item" href="#"><i class="icon-line-arrow-up me-2"></i>Stick On Top</a>
-                                <a class="dropdown-item" href="#"><i class="icon-line-git-merge me-2"></i>Merge</a>
-                                <a class="dropdown-item" href="#"><i class="icon-line-trash-2 me-2"></i>Trash</a>
-                                <a class="dropdown-item" href="#"><i class="icon-line-alert-triangle me-2"></i>Spam</a>
-                                <a class="dropdown-item" href="#message-reply" data-scrollto="#message-reply"><i class="icon-line-corner-up-left me-2"></i>Reply</a>
+                        
+                        @if (Auth::check())                            
+                            <div class="col-auto">
+                                <a href="#" id="editlink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-line-ellipsis icon-2x alt-color"></i></a>
+                                <div class="dropdown-menu dropdown-menu-links rounded shadow-sm dropdown-menu-end py-0 m-0" aria-labelledby="editlink">
+                                    @if (Auth::user()->can('update', $question))                                        
+                                        <a class="dropdown-item rounded-top" href="{{ route('questions.edit', $question->slug) }}"><i class="icon-line-edit me-2"></i>Edit</a>
+                                    @endif
+                                    @if (Auth::user()->can('delete', $question))
+                                        <form action="{{ route('questions.destroy', $question->slug) }}" method="post" class="mb-0">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="dropdown-item"><i class="icon-line-trash-2 me-2"></i>Delete</button>
+                                        </form>
+                                    @endif
+                                    <a class="dropdown-item" href="#answer-form" data-scrollto="#answer-form"><i class="icon-line-corner-up-left me-2"></i>Reply</a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
     
                     <div class="clear"></div>

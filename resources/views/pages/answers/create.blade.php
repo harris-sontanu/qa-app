@@ -1,6 +1,6 @@
 <div class="topic-form mt-5">
     <h3 class="h2 fw-bolder mb-4">Your Answer</h3>
-    <form class="row" action="{{ route('questions.answers.store', $questionSlug) }}" method="post" enctype="multipart/form-data">
+    <form id="answer-form" class="row" action="{{ route('questions.answers.store', $questionSlug) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="col-12 form-group mb-4">
             <textarea name="body" id="body" class="form-control tinymce @error('body') is-invalid @enderror" cols="30" rows="10">{{ old('body') }}</textarea>

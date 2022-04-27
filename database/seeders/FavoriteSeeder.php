@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Question;
+use Illuminate\Support\Facades\DB;
 
 class FavoriteSeeder extends Seeder
 {
@@ -16,6 +17,8 @@ class FavoriteSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('favorites')->delete();
+
         $users = User::all()->modelKeys();
         $totalUsers = count($users);
 

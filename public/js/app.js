@@ -2213,6 +2213,18 @@ $(function () {
       });
     });
   });
+  $(document).on('click', '.accept-answer', function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $.post(url, function () {
+      location.reload();
+    });
+  });
 });
 
 /***/ }),

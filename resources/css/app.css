@@ -15,3 +15,11 @@
 	font-size: 27px;
 	line-height: 20px;
 }
+
+.vote-accepted {
+	color: #198754;
+}
+
+.vote-accepted:hover {
+	color: darkgreen;
+}

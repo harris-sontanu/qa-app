@@ -8,13 +8,13 @@
                 <a href="#" class="vote-up" title="This Answer is useful"><i class="icon-caret-up1"></i></a>
                 <strong class="d-block votes-count mb-4">{{ $answer->votes_count }}</strong>
                 <a href="#" class="vote-down" title="This Answer is not useful"><i class="icon-caret-down1"></i></a>
-                <a href="#" class="bookmark" title="Accept this Answer"><i class="icon-check"></i></a>
+                <a href="#" class="bookmark {{ $answer->status }}" title="Accept this Answer"><i class="icon-check"></i></a>
             </div>
             <div class="flex-grow-1">
                 @if (!empty($question->best_answer_id))
                 <div class="row justify-content-between align-items-center mb-4">
                     <div class="col-9">
-                        <h2 class="mb-0 fw-bold"><i class="icon-line-check text-success"></i> Best Answer</h2>
+                        <h2 class="mb-0 fw-bold">Best Answer</h2>
                     </div>
                     <div class="col-auto">
                         <a href="#" class="badge bg-success text-white p-2">Solved</a>

@@ -5,24 +5,23 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Factories\Sequence;
-use App\Models\User;
 use App\Models\Question;
-use App\Models\Answer;
+use App\Models\User;
 
-class DatabaseSeeder extends Seeder
+class QuestionSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-            UserSeeder::class,
-            QuestionSeeder::class,
-            AnswerSeeder::class,
-            FavoriteSeeder::class
-        ]);
+        Question::factory()
+            ->count(27)
+            ->state(new Sequence(
+                fn ($sequence) => ['user_id' => User::all()->random()],
+            ))
+            ->create();
     }
 }

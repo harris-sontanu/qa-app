@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return "https://ui-avatars.com/api/?name={$this->name}&size={$size}&background=random&font-size={$fontSize}";
     }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Question::class, 'favorites');
+    }
 }

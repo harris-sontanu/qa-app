@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class Question extends Model
 {
@@ -116,4 +117,24 @@ class Question extends Model
         $this->best_answer_id = $answer->id;
         $this->save();
     }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
+
+    public function isFavorited (): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $this->favorites()->where('user_id', Auth::id())->count() > 0
+        );
+    }
+
+    public function countFavorites(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $this->favorites->count()
+        );
+    }
+
 }

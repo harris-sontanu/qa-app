@@ -27,7 +27,11 @@
                     <a href="#" class="vote-up" title="This Question is useful"><i class="icon-caret-up1"></i></a>
                     <strong class="d-block votes-count mb-4">{{ $question->votes }}</strong>
                     <a href="#" class="vote-down" title="This Question is not useful"><i class="icon-caret-down1"></i></a>
-                    <a href="#" class="bookmark" title="Bookmark this question"><i class="icon-bookmark"></i></a>
+                    @if ($question->is_favorited)
+                        <a role="button" href="{{ route('questions.unfavorite', $question->slug) }}" data-method="DELETE" class="bookmark text-success" title="Remove Bookmark This Question"><i class="icon-bookmark"></i></a>
+                    @else
+                        <a role="button" href="{{ route('questions.favorite', $question->slug) }}" data-method="POST" class="bookmark" title="Bookmark This Question"><i class="icon-bookmark"></i></a>
+                    @endif
                     <span class="d-block text-muted">{{ $question->favoritesCount }}</span>
                 </div>
                 <div class="flex-grow-1">

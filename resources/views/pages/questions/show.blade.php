@@ -28,7 +28,7 @@
                     <strong class="d-block votes-count mb-4">{{ $question->votes }}</strong>
                     <a href="#" class="vote-down" title="This Question is not useful"><i class="icon-caret-down1"></i></a>
                     <a href="#" class="bookmark" title="Bookmark this question"><i class="icon-bookmark"></i></a>
-                    <span class="d-block text-muted">123</span>
+                    <span class="d-block text-muted">{{ $question->favoritesCount }}</span>
                 </div>
                 <div class="flex-grow-1">
                     <div class="row g-0 justify-content-between align-items-center border-top border-bottom py-3 mb-4">
@@ -41,12 +41,12 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        @if (Auth::check())                            
+
+                        @if (Auth::check())
                             <div class="col-auto">
                                 <a href="#" id="editlink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-line-ellipsis icon-2x alt-color"></i></a>
                                 <div class="dropdown-menu dropdown-menu-links rounded shadow-sm dropdown-menu-end py-0 m-0" aria-labelledby="editlink">
-                                    @if (Auth::user()->can('update', $question))                                        
+                                    @if (Auth::user()->can('update', $question))
                                         <a class="dropdown-item rounded-top" href="{{ route('questions.edit', $question->slug) }}"><i class="icon-line-edit me-2"></i>Edit</a>
                                     @endif
                                     @if (Auth::user()->can('delete', $question))
@@ -61,15 +61,15 @@
                             </div>
                         @endif
                     </div>
-    
+
                     <div class="clear"></div>
-    
+
                     {!! $question->body !!}
-    
+
                     <div class="col-1 p-0">
                         <hr>
                     </div>
-    
+
                     @if (!empty($question->attachment))
                         <div class="attachment-wrapper pt-3">
                             <h4 class="mb-3">Attachment</h4>

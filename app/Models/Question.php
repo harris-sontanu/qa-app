@@ -130,7 +130,7 @@ class Question extends Model
         );
     }
 
-    public function countFavorites(): Attribute
+    public function favoritesCount(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => $this->favorites->count()

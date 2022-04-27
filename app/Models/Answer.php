@@ -47,4 +47,11 @@ class Answer extends Model
             get: fn ($value) => $this->id === $this->question->best_answer_id ? 'vote-accepted' : ''
         );
     }
+
+    public function isAccepted(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $this->id === $this->question->best_answer_id
+        );
+    }
 }

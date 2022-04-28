@@ -24,7 +24,7 @@ class AnswerFactory extends Factory
 
         return [            
             'body'          => $body,
-            'votes_count'   => rand(1, 5)
+            // 'votes_count'   => rand(1, 5)
         ];
     }
 }

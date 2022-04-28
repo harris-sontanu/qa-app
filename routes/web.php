@@ -6,6 +6,7 @@ use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AcceptAnswerController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\VoteQuestionController;
+use App\Http\Controllers\VoteAnswerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +43,7 @@ Route::delete('/questions/{question}/favorites', [FavoriteController::class, 'de
 Route::post('/questions/{question}/vote', VoteQuestionController::class)
     ->middleware('auth')
     ->name('questions.vote');
+
+Route::post('/answers/{answer}/vote', VoteAnswerController::class)
+    ->middleware('auth')
+    ->name('answers.vote');

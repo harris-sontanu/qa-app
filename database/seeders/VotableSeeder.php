@@ -10,6 +10,8 @@ use App\Models\Question;
 
 class VotableSeeder extends Seeder
 {
+    private $votes = [-1, 1];
+
     /**
      * Run the database seeds.
      *
@@ -17,19 +19,20 @@ class VotableSeeder extends Seeder
      */
     public function run()
     {
+        $this->voteQuestion();
+    }
+
+    private function voteQuestion() {
         DB::table('votables')->where('votable_type', 'App\Models\Question')->delete();
         DB::table('questions')->update(['votes_count' => 0]);
 
         $users = User::all();
-        $totalUsers = $users->count();
-        $votes = [-1, 1];
 
         foreach (Question::all() as $question) {
-            for ($i=0; $i < rand(1, $totalUsers); $i++) { 
+            for ($i=0; $i < rand(1, $users->count()); $i++) { 
                 $user = $users[$i];
-                $user->voteQuestion($question, $votes[rand(0, 1)]);
+                $user->voteQuestion($question, $this->votes[rand(0, 1)]);
             }
         }
-
     }
 }

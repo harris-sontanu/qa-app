@@ -75,7 +75,6 @@ class User extends Authenticatable
 
     public function voteQuestion(Question $question, $vote)
     {   
-        // dd($question->id);
         $voteQuestions = $this->voteQuestions();
         if ($voteQuestions->where('votable_id', $question->id)->exists()) {
             $voteQuestions->updateExistingPivot($question, ['vote' => $vote]);

@@ -2241,15 +2241,13 @@ $(function () {
     }).done(function () {
       location.reload();
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      if (jqXHR.status === 401) {
-        var popover = new bootstrap.Popover(dom, {
-          container: 'body',
-          html: true,
-          content: 'Please <a href="login">sign in</a> or <a href="register">sign up</a> to bookmark this question',
-          trigger: 'focus'
-        });
-        popover.show();
-      }
+      var popover = new bootstrap.Popover(dom, {
+        container: 'body',
+        html: true,
+        content: 'Please <a href="login">sign in</a> or <a href="register">sign up</a> to bookmark this question',
+        trigger: 'focus'
+      });
+      popover.show();
     });
   });
 });

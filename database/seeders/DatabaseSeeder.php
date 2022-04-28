@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             QuestionSeeder::class,
             AnswerSeeder::class,
-            FavoriteSeeder::class
+            FavoriteSeeder::class,
+            VotableSeeder::class
         ]);
     }
 }

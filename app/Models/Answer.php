@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\VotableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Answer extends Model
 {
     use HasFactory;
+    use VotableTrait;
 
     protected $fillable = [
         'body',
@@ -42,7 +44,7 @@ class Answer extends Model
     }
 
     public function status(): Attribute
-    {   
+    {
         return Attribute::make(
             get: fn ($value) => $this->id === $this->question->best_answer_id ? 'vote-accepted' : ''
         );
@@ -55,19 +57,4 @@ class Answer extends Model
         );
     }
 
-    public function votes()
-    {
-        return $this->morphToMany(User::class, 'votable');
-    }
-
-    public function upVotes()
-    {
-        return $this->votes()->wherePivot('vote', 1);
-    }
-
-    public function downVotes()
-    {
-        return $this->votes()->wherePivot('vote', -1);
-    }
-    
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\VotableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class Question extends Model
 {
     use HasFactory;
+    use VotableTrait;
 
     protected $fillable = [
         'title',
@@ -137,18 +139,4 @@ class Question extends Model
         );
     }
 
-    public function votes()
-    {
-        return $this->morphToMany(User::class, 'votable')->withTimestamps();
-    }
-
-    public function upVotes()
-    {
-        return $this->votes()->wherePivot('vote', 1);
-    }
-
-    public function downVotes()
-    {
-        return $this->votes()->wherePivot('vote', -1);
-    }
 }

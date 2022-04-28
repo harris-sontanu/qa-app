@@ -25,7 +25,7 @@
             <div class="topic-post d-flex">
                 <div class="flex-column me-4 text-center">
                     <a href="#" class="vote-up" title="This Question is useful"><i class="icon-caret-up1"></i></a>
-                    <strong class="d-block votes-count mb-4">{{ $question->votes }}</strong>
+                    <strong class="d-block votes-count mb-4">{{ $question->votes_count }}</strong>
                     <a href="#" class="vote-down" title="This Question is not useful"><i class="icon-caret-down1"></i></a>
                     @if ($question->is_favorited)
                         <a role="button" href="{{ route('questions.unfavorite', $question->slug) }}" data-method="DELETE" class="bookmark text-success" title="Remove Bookmark This Question"><i class="icon-bookmark"></i></a>

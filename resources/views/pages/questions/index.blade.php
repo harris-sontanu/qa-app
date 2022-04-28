@@ -58,7 +58,7 @@
                                             <div class="row">
                                                 <div class="col-lg-2 d-flex flex-column text-end pt-1 small">
                                                     <div class="vote mb-2">
-                                                        <strong>{{ $question->votes }}</strong> votes
+                                                        <strong>{{ $question->votes_count }}</strong> votes
                                                     </div>
                                                     @if ($question->answers_count > 0 && !empty($question->best_answer_id))
                                                         <div class="status mb-2">

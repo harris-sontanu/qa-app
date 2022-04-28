@@ -28,7 +28,7 @@ class QuestionFactory extends Factory
             'body'      => $body,
             'views'     => rand(0, 10),
             // 'answers_count'   => rand(0, 10),
-            'votes'     => rand(-3, 10)
+            'votes_count'     => rand(-3, 10)
         ];
     }
 }

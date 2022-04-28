@@ -2244,13 +2244,13 @@ $(function () {
       var popover = new bootstrap.Popover(dom, {
         container: 'body',
         html: true,
-        content: 'Please <a href="login">sign in</a> or <a href="register">sign up</a> to bookmark this question',
+        content: 'Please <a href="/login">sign in</a> or <a href="register">sign up</a> to bookmark this question',
         trigger: 'focus'
       });
       popover.show();
     });
   });
-  $(document).on('click', '.vote', function (e) {
+  $(document).on('click', '.question-vote', function (e) {
     e.preventDefault();
     var dom = $(this);
     vote = dom.data('vote');
@@ -2272,7 +2272,35 @@ $(function () {
       var popover = new bootstrap.Popover(dom, {
         container: 'body',
         html: true,
-        content: 'Please <a href="login">sign in</a> or <a href="register">sign up</a> to vote this question',
+        content: 'Please <a href="/login">sign in</a> or <a href="register">sign up</a> to vote this question',
+        trigger: 'focus'
+      });
+      popover.show();
+    });
+  });
+  $(document).on('click', '.answer-vote', function (e) {
+    e.preventDefault();
+    var dom = $(this);
+    vote = dom.data('vote');
+    url = dom.attr('href');
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $.ajax({
+      url: url,
+      method: 'POST',
+      data: {
+        vote: vote
+      }
+    }).done(function () {
+      location.reload();
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      var popover = new bootstrap.Popover(dom, {
+        container: 'body',
+        html: true,
+        content: 'Please <a href="/login">sign in</a> or <a href="register">sign up</a> to vote this answer',
         trigger: 'focus'
       });
       popover.show();

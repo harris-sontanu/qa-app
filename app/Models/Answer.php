@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Mews\Purifier\Casts\CleanHtmlOutput;
 
 class Answer extends Model
 {
@@ -13,6 +14,10 @@ class Answer extends Model
     protected $fillable = [
         'body',
         'user_id'
+    ];
+
+    protected $casts = [
+        'body'    => CleanHtmlOutput::class, // cleans when getting the value
     ];
 
     public function question()

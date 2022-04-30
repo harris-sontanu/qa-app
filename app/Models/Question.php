@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Mews\Purifier\Casts\CleanHtmlOutput;
 
 class Question extends Model
 {
@@ -18,6 +19,10 @@ class Question extends Model
         'title',
         'body',
         'attachment'
+    ];
+
+    protected $casts = [
+        'body'    => CleanHtmlOutput::class, // cleans when getting the value
     ];
 
     /**

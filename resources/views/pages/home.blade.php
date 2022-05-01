@@ -52,40 +52,33 @@
             <div class="mw-md mx-auto">
                 <ul class="list-unstyled mb-4">
                     <li>
-                        @if (count($latestQuestions) > 0)
-
-                            @foreach ($latestQuestions as $question)
-                                
-                                <ul class="topic list-unstyled row mx-0 justify-content-between align-items-center border-top-0">
-                                    <li class="entry mb-0">
-                                        <h3 class="mb-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
-                                        {!! $question->excerpt !!}
-                                        <div class="mt-2 d-flex justify-content-between">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">javascript</span></a></li>
-                                                <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">laravel</span></a></li>
-                                                <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">php</span></a></li>
-                                            </ul>
-                                            <div class="text-end small">
-                                                <a href="#" class="text-default">
-                                                    <img class="align-text-bottom me-1" alt="{{ $question->user->name }}" src="{{ $question->user->avatar(16) }}" width="16" height="16">
-                                                    {{ $question->user->name }}
-                                                </a>
-                                                <span class="text-muted">asked {{ $question->created_at->diffForHumans() }}</span>
-                                            </div>
+                        @forelse ($latestQuestions as $question)
+                            <ul class="topic list-unstyled row mx-0 justify-content-between align-items-center border-top-0">
+                                <li class="entry mb-0">
+                                    <h3 class="mb-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
+                                    {!! $question->excerpt !!}
+                                    <div class="mt-2 d-flex justify-content-between">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">javascript</span></a></li>
+                                            <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">laravel</span></a></li>
+                                            <li class="list-inline-item"><a href="#"><span class="badge bg-secondary">php</span></a></li>
+                                        </ul>
+                                        <div class="text-end small">
+                                            <a href="#" class="text-default">
+                                                <img class="align-text-bottom me-1" alt="{{ $question->user->name }}" src="{{ $question->user->avatar(16) }}" width="16" height="16">
+                                                {{ $question->user->name }}
+                                            </a>
+                                            <span class="text-muted">asked {{ $question->created_at->diffForHumans() }}</span>
                                         </div>
-                                    </li>
-                                </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        @empty
 
-                            @endforeach
-                            
-                        @else
-                            
-                        @endif
-                        
+                        @endforelse
                     </li>
                 </ul>
-                
+
                 <div class="text-center"><a href="{{ route('questions.index') }}" class="button button-small button-border button-rounded mx-0">Show more</a></div>
             </div>
 

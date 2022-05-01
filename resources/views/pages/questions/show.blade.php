@@ -46,14 +46,14 @@
                             </div>
                         </div>
 
-                        @if (Auth::check())
+                        @auth
                             <div class="col-auto">
                                 <a href="#" id="editlink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-line-ellipsis icon-2x alt-color"></i></a>
                                 <div class="dropdown-menu dropdown-menu-links rounded shadow-sm dropdown-menu-end py-0 m-0" aria-labelledby="editlink">
-                                    @if (Auth::user()->can('update', $question))
+                                    @can('update', $question))
                                         <a class="dropdown-item rounded-top" href="{{ route('questions.edit', $question->slug) }}"><i class="icon-line-edit me-2"></i>Edit</a>
                                     @endif
-                                    @if (Auth::user()->can('delete', $question))
+                                    @can('delete', $question))
                                         <form action="{{ route('questions.destroy', $question->slug) }}" method="post" class="mb-0">
                                             @method('DELETE')
                                             @csrf
@@ -63,7 +63,7 @@
                                     <a class="dropdown-item" href="#answer-form" data-scrollto="#answer-form"><i class="icon-line-corner-up-left me-2"></i>Reply</a>
                                 </div>
                             </div>
-                        @endif
+                        @endauth
                     </div>
 
                     <div class="clear"></div>
@@ -74,12 +74,12 @@
                         <hr>
                     </div>
 
-                    @if (!empty($question->attachment))
+                    @unless (empty($question->attachment))
                         <div class="attachment-wrapper pt-3">
                             <h4 class="mb-3">Attachment</h4>
                             <a href="{{ $question->attachment_url }}" class="button button-small button-rounded button-border m-0"><i class="icon-file-{{ $question->attachment_ext }} me-1"></i>{{ $question->attachment_name }}</a>
                         </div>
-                    @endif
+                    @endunless
                 </div>
             </div>
 
